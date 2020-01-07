@@ -60,7 +60,7 @@ public class Game{
                 display_hand(Hand);
                 System.out.println("("+dvalue+")");
 
-                while(dvalue<17){
+                while(dvalue<17 || dvalue < value){
                
                     System.out.println("The dealer HITS.");
                     j--;
@@ -74,7 +74,7 @@ public class Game{
                         System.out.println("YOU WIN");
                         stack += bet;
                         break;}
-                     } 
+                    } 
             }
 
             if(17<= dvalue && dvalue <22 && !blackjack(Arrays.copyOfRange(Deck,j,52))){
@@ -159,14 +159,14 @@ public class Game{
         System.out.println("-----------------------------------------");
         System.out.println("Your stack: "+stack);
     }
-    
+
     static Boolean blackjack(Card[]Hand){ // checks if a hand is a blackjack
         if(hand_value(Hand)==21 && Hand.length==2){
             return true;
         }
         return false;
     }    
-
+    
     static void display_hand (Card[]Hand){ // displays a hand
         for(int i=0;i<Hand.length;i++){
             System.out.print(Hand[i].display()+" ");
